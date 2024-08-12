@@ -3,6 +3,13 @@ from .forms import LoginForms,SellerForms
 
 
 
+
+
+def seller_home_page(request):
+    return render(request,'seller/seller_home.html')
+
+
+
 # customer account creation
 
 def seller_account_creation(request):
@@ -24,6 +31,6 @@ def seller_account_creation(request):
             user1.user=a
             user1.save()
         
-            return redirect('home')
+            return redirect('seller_home')
         
     return render(request,"seller/create_account.html",{'l_form':l_form,'s_form':s_form})

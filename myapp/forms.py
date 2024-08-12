@@ -34,4 +34,4 @@ class SellerForms(forms.ModelForm):
     class Meta:
         model = seller
         fields ="__all__"
-        exclude = ("user",)
+        exclude = ("user","status")
