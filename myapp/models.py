@@ -21,6 +21,7 @@ class Customer(models.Model):
 
     def __str__(self):
         return self.Name
+ 
     
 # seller models
 
@@ -36,3 +37,30 @@ class seller(models.Model):
         return self.Name
     
 
+
+class product(models.Model):
+    sellers=models.ForeignKey(seller,on_delete=models.CASCADE)
+    brand = models.CharField(max_length=50)
+    name = models.CharField(max_length=100)
+    image = models.ImageField(upload_to="media/")
+    category =(
+                    (1,"shoe"),
+                    (2,"cloth"),
+                                 
+    )
+    product_category = models.IntegerField(choices=category,null=True,blank=True)
+    sex_category = (
+                      
+                      (1,"men"),
+                      (2,"women"),
+                      (3,"unisex"),
+    )
+    sex =models.IntegerField(choices=sex_category,null=True,blank=True)
+    specification = models.TextField()
+
+    price = models.CharField(max_length=6)
+
+
+    def __str__(self):
+        return self.name
+    

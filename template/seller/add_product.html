@@ -1,0 +1,21 @@
+{% extends "seller/seller_home.html" %}
+
+{% load static %}
+{% load crispy_forms_tags %} 
+
+
+
+{% block SELLER %}
+
+<div style=" background-color: yellowgreen; width: 100%;">
+
+    <form method="post" enctype="multipart/form-data" style="margin-left: 20%; width: 50%; color: black;">
+        {% csrf_token %}
+        {{add_prodct_form|crispy}}
+        <button type="submit" style="width: 100%; background-color: green; color: white;">ADD PRODUCT</button>
+    </form>
+</div>
+
+
+
+{% endblock SELLER %}

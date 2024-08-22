@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from .forms import LoginForms,CustomerForms
-
+from .models import product
 
 # customer account creation
 
@@ -29,3 +29,8 @@ def customer_account_creation(request):
             return redirect('customer_home')
         
     return render(request,"customer/create_account.html",{'l_form':l_form,'c_form':c_form})
+
+
+def product_show(request):
+    show_product = product.objects.all()
+    return render(request,"customer/product_show.html",{"show_product":show_product})

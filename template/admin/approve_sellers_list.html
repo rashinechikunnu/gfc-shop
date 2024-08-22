@@ -1,0 +1,36 @@
+{% extends "admin/home_page.html" %}
+
+
+{% block content %}
+
+<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="row">serial no</th>
+        <th scope="col">NAME</th>
+        <th scope="col">CONTACT</th>
+        <th scope="col">EMAIL</th>
+        <th scope="col">SHOPE ADDRESS</th>
+        <th scope='col'>Product</th>
+       
+
+      </tr>
+    </thead>
+    <tbody>
+        {% for x in seller_approved %}
+        
+        <tr>
+            <td>{{forloop.counter}}
+            <td>{{x.Name}}</td>
+            <td>{{x.contact}}</td>
+            <td>{{x.email}}</td>
+            <td>{{x.shop_address}}</td>
+            <td><a href="{% url 'product_view' x.pk %}">view product</a></td>
+        </tr>
+
+        {% endfor %}
+
+    </tbody>
+</table>
+
+{% endblock content %}

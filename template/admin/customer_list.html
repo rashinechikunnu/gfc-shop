@@ -1,0 +1,40 @@
+{% extends "admin/home_page.html" %}
+
+{% block content %}
+
+<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="row">serial no</th>
+        <th scope="col">NAME</th>
+        <th scope="col">Phone Number</th>
+        <th scope="col">EMAIL</th>
+        <th scope="col">Address</th>
+        
+
+      </tr>
+    </thead>
+    <tbody>
+        {% for xy in customers_list %}
+        
+        <tr>
+            <td>{{forloop.counter}}
+            <td>{{xy.Name}}</td>
+            <td>{{xy.phone_number}}</td>
+            <td>{{xy.email}}</td>
+            <td>{{xy.address}}</td>
+            
+          
+          </tr>
+     
+      {% endfor %}
+     
+    </tbody>
+  </table>
+
+
+{% endblock content %}
+
+
+
+

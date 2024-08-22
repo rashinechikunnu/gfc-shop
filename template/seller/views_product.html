@@ -1,0 +1,39 @@
+{% extends "seller/seller_home.html" %}
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+
+{% block SELLER %}
+<link rel="stylesheet" href="{% static 'css/views_product.css' %}">
+
+{% for product in view_product %}
+
+    <div class="card" style="width: 18rem;">
+      <img src="{{product.image.url}}" class="card-img-top" alt="{{product.name}}">
+        <div class="card-body">
+        <h3 class="card-title">{{product.brand}}</h3>
+        <h5 class="card-title">{{product.name}}</h5>
+        <h6 class="text-danger">{{product.price}}</h6>
+        <a href="{{product.detail_url}}" class="btn btn-primary">Full Details</a>
+        </div>
+    </div>
+  
+         
+
+{% endfor %}
+
+
+{% endblock SELLER %}
+
+  
+</body>
+</html>

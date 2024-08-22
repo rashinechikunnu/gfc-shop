@@ -1,6 +1,5 @@
 {% extends "admin/home_page.html" %}
 
-
 {% block content %}
 
 <table class="table table-bordered">
@@ -11,23 +10,20 @@
         <th scope="col">CONTACT</th>
         <th scope="col">EMAIL</th>
         <th scope="col">SHOPE ADDRESS</th>
-        <th scope="col">view products</th>
-        <th scope="col">delete</th>
+        
+
       </tr>
     </thead>
     <tbody>
-        {% for i in s_list %}
+        {% for y in reject_seller %}
         
         <tr>
             <td>{{forloop.counter}}
-            <td>{{i.Name}}</td>
-            <td>{{i.contact}}</td>
-            <td>{{i.email}}</td>
-            <td>{{i.shop_address}}</td>
-            <td>
-                <a href="#">see products</a>
-            </td>
-            <td>delete</td>
+            <td>{{y.Name}}</td>
+            <td>{{y.contact}}</td>
+            <td>{{y.email}}</td>
+            <td>{{y.shop_address}}</td>
+            
           
           </tr>
      
@@ -37,4 +33,8 @@
   </table>
 
 
-  {% endblock %}
+{% endblock content %}
+
+
+
+

@@ -1,7 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm
 
 from django import forms
-from .models import Customer,Login,seller
+from .models import Customer,Login,seller,product
 
 # create a customer_data modelForm
 
@@ -35,3 +35,13 @@ class SellerForms(forms.ModelForm):
         model = seller
         fields ="__all__"
         exclude = ("user","status")
+
+
+# seller add product form
+
+class prodctForms(forms.ModelForm):
+    
+    class Meta:
+        model = product
+        fields ="__all__"
+        exclude = ("sellers",)

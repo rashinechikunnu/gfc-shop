@@ -1,0 +1,7 @@
+.card{
+display: inline;
+display: flex;
+justify-content: space-between;
+gap: 30px; /* Space between cards */
+flex-wrap: wrap; /* Allows cards to wrap on smaller screens */
+}

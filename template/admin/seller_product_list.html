@@ -1,0 +1,32 @@
+{% extends "admin/home_page.html" %}
+{% load static %}
+
+
+
+
+
+{% block admin %}
+<link rel="stylesheet" href="{% static 'css/views_product.css' %}">
+
+{% for product in view_product %}
+
+    <div class="card" style="width: 18rem;">
+      <img src="{{product.image.url}}" class="card-img-top" alt="{{product.name}}">
+        <div class="card-body">
+        <h3 class="card-title">{{product.brand}}</h3>
+        <h5 class="card-title">{{product.name}}</h5>
+        <h6 class="text-danger">{{product.price}}</h6>
+        <a href="{{product.detail_url}}" class="btn btn-primary">Full Details</a>
+        </div>
+    </div>
+  
+         
+
+{% endfor %}
+
+
+{% endblock admin %}
+
+  
+</body>
+</html>

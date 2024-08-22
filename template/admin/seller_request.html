@@ -24,22 +24,23 @@
             <td>{{i.email}}</td>
             <td>{{i.shop_address}}</td>
 
-            {% comment %} <td>
-                {% if zx.status == 0 %}
-                 <button><a href="{% url 'approved_manager' zx.id %}"> approve </a></button>
+           <td>
+              {% if i.status == 0 %}
+                <button><a href="{% url "approval_seller" i.id %}"> approve </a></button>
          
-                 <button><a href="{% url 'rejected_manager' zx.id %}">reject</a></button>
+                <button><a href="{% url "reject_seller" i.id %}">reject</a></button>
                       
-             {% elif zx.status == 1 %}
+             {% elif i.status == 1 %}
                  <p>approved</p>     
                  
                  {% else %}
 
                  <p>rejected</p>
                  {% endif %} 
+                </td>
          
              </td>
-            {% endcomment %}
+            
           
           </tr>
      

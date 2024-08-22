@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
+from . models import product
 
 from myapp.models import seller
 
@@ -37,15 +38,25 @@ def log_in(request):
                 stat = seller.objects.get(user = user_click)
                 if stat.status == 1 :
 
-
                     return redirect('seller_home')
+                elif stat.status == 2:
+                    messages.info(request,'admin rejected your account')
                 else:
-                    messages.info(request,'wait for admin approval')
+                    messages.info(request,"waiting for admin approval")
                 
        
         else:
             messages.info(request,'invalid username and password')
     return render(request,"login.html")
+
+
+# shoe category
+
+def shoe(request):
+    shoe_list = product.objects.filter(product_category=1)
+    print(shoe_list)
+    return render(request,"shoe.html",{"shoe_list":shoe_list})
+
 
 
 # logout
