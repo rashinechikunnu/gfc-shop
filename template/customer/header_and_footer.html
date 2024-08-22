@@ -20,29 +20,37 @@
         </div>
       </nav>
     
+      
+      {% block customer %}
+        
+
+
+
+      {% endblock customer %}
     
-    
-    {% for s_product in show_product %}
-    
-           
-    <div class="card mt-5 ms-5" style="width: 18rem;">
-        <img  src="{{s_product.image.url}}" alt="Card image cap">
-        <div  class="card-body">
-          <h3 class="card-title">{{s_product.brand}}</h3>
-          <p class="card-text">{{s_product.name}}</p>
-          <p class="card-text" style="color: red;">{{s_product.price}}</p>
-          <td ><a href="" style="color: red;">add to cart</a> / <a href="" style="color: red;">buy now</a></td>
-         
+
+      <div style="margin-bottom: 100px;" >
+
+      </div>
+
+      <footer class="text-center  bg-warning text-white bottom">
+        
+        <!-- Copyright --> 
+        <div class="text-center p-3">
+          <h5>Gfc Shop<h5>
+          
         </div>
-    </div>
-             
-    {% endfor %}
+        <!-- Copyright -->
+      </footer>
+   
     
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 </body>
 </html>
+
+
 
 
 

@@ -50,12 +50,27 @@ def log_in(request):
     return render(request,"login.html")
 
 
-# shoe category
+# all shoe view with out login customer
 
 def shoe(request):
     shoe_list = product.objects.filter(product_category=1)
     print(shoe_list)
-    return render(request,"shoe.html",{"shoe_list":shoe_list})
+    return render(request,"all_shoe_list.html",{"shoe_list":shoe_list})
+
+
+# all cloth view with out login customer
+
+def cloth(request):
+    cloth_list = product.objects.filter(product_category=2)
+    print(cloth_list)
+    return render(request,"all_cloth_list.html",{"cloth_list":cloth_list})
+
+
+# all accessories view with out login customer
+def accessories(request):
+    accessories_list = product.objects.filter(product_category=3)
+    print(accessories_list)
+    return render(request,"all_accessories_list.html",{"accessories_list":accessories_list})
 
 
 

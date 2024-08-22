@@ -1,0 +1,29 @@
+{% extends "customer/header_and_footer.html" %}
+    
+    
+{% block customer %}
+
+
+
+    {% for s_product in c_shoe_list %}
+    
+           
+    <div class="card mt-5 ms-5" style="width: 18rem;">
+        <img  src="{{s_product.image.url}}" alt="Card image cap">
+        <div  class="card-body">
+          <h3 class="card-title">{{s_product.brand}}</h3>
+          <p class="card-text">{{s_product.name}}</p>
+          <p class="card-text" style="color: red;">{{s_product.price}}</p>
+          <td ><a href="{% url 'login' %}" style="color: red;">add to cart</a> / <a href="{% url 'login' %}" style="color: red;">buy now</a></td>
+         
+        </div>
+    </div>
+             
+    {% endfor %}
+    
+    
+    {% endblock customer %}
+
+
+
+

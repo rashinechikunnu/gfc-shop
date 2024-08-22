@@ -46,6 +46,7 @@ class product(models.Model):
     category =(
                     (1,"shoe"),
                     (2,"cloth"),
+                    (3,"accessories")
                                  
     )
     product_category = models.IntegerField(choices=category,null=True,blank=True)

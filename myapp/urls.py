@@ -1,10 +1,12 @@
 from django.urls import path
 from . import views,views_customer,views_seller,views_admin
 urlpatterns = [
-   
+    # with out login
     path('',views.home,name='home'),
     path('login',views.log_in,name='login'),
     path('shoe',views.shoe,name='shoe'),
+    path('cloth',views.cloth,name='cloth'),
+    path('accessories',views.accessories,name='accessories'),
 
 
 
@@ -38,8 +40,8 @@ urlpatterns = [
     path('customer_registration',views_customer.customer_account_creation,name='customer_registration'),
     # logout
     path('log_out',views.log_out,name='log_out'),
-    # show product
-    path('show_product',views_customer.product_show,name='show_product'),
+    # show shoe product
+    path('show_all_shoe',views_customer.c_shoe,name='show_all_shoe'),
 
 
 
