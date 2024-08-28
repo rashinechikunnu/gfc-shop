@@ -50,27 +50,102 @@ def log_in(request):
     return render(request,"login.html")
 
 
-# all shoe view with out login customer
 
-def shoe(request):
-    shoe_list = product.objects.filter(product_category=1)
+
+# mens area
+
+# all men shoe view  customer
+
+def mens_shoe(request):
+
+    shoe_list = product.objects.filter(product_category=1,sex=3)
+    list_shoe = product.objects.filter(product_category=1,sex=1)
+    
+    combined_shoes = shoe_list | list_shoe
     print(shoe_list)
-    return render(request,"all_shoe_list.html",{"shoe_list":shoe_list})
+    
+    return render(request,"all_men_shoe_list.html",{"combined_shoes":combined_shoes})
 
 
-# all cloth view with out login customer
+# all men cloth view customer
 
-def cloth(request):
-    cloth_list = product.objects.filter(product_category=2)
+def mens_cloth(request):
+
+    cloth_list = product.objects.filter(product_category=2,sex=1)
+    list_cloth = product.objects.filter(product_category=2,sex=3)
+
+    combined_cloth = cloth_list | list_cloth
+    
+
     print(cloth_list)
-    return render(request,"all_cloth_list.html",{"cloth_list":cloth_list})
+    return render(request,"all_men_cloth_list.html",{"combined_cloth":combined_cloth})
 
 
-# all accessories view with out login customer
-def accessories(request):
-    accessories_list = product.objects.filter(product_category=3)
+# all men accessories view  customer
+def mens_accessories(request):
+    accessories_list = product.objects.filter(product_category=3,sex=1)
     print(accessories_list)
-    return render(request,"all_accessories_list.html",{"accessories_list":accessories_list})
+    list_accessories = product.objects.filter(product_category=3,sex=3)
+
+    combined_accessories = accessories_list | list_accessories
+
+    print(accessories_list)
+    return render(request,"all_men_accessories_list.html",{"combined_accessories":combined_accessories})
+
+
+
+
+
+
+# womens area
+
+
+# all women shoe view  customer
+
+def women_shoe(request):
+
+    shoe_list = product.objects.filter(product_category=1,sex=2)
+    list_shoe = product.objects.filter(product_category=1,sex=3)
+    
+    combined_shoes = shoe_list | list_shoe
+    print(shoe_list)
+    
+    return render(request,"all_men_shoe_list.html",{"combined_shoes":combined_shoes})
+
+
+# all women cloth view customer
+
+def women_cloth(request):
+
+    cloth_list = product.objects.filter(product_category=2,sex=2)
+    list_cloth = product.objects.filter(product_category=2,sex=3)
+
+    combined_cloth = cloth_list | list_cloth
+    
+
+    print(cloth_list)
+    return render(request,"all_men_cloth_list.html",{"combined_cloth":combined_cloth})
+
+
+# all women accessories view  customer
+def women_accessories(request):
+    accessories_list = product.objects.filter(product_category=3,sex=2)
+    print(accessories_list)
+    list_accessories = product.objects.filter(product_category=3,sex=3)
+
+    combined_accessories = accessories_list | list_accessories
+
+    print(accessories_list)
+    return render(request,"all_men_accessories_list.html",{"combined_accessories":combined_accessories})
+
+
+# product full details
+def product_details(request,pk):
+    details_product = product.objects.get(pk=pk)
+    
+    print(details_product)
+    return render(request,"product_full_details.html",{'details_product':details_product})
+
 
 
 

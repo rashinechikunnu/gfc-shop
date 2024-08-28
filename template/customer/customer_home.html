@@ -74,7 +74,7 @@
                   <div class="main">
                      <!-- Another variation with a button -->
                      <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search this blog">
+                        <input type="text" class="form-control" placeholder="Search">
                         <div class="input-group-append">
                            <button class="btn btn-secondary" type="button" style="background-color: #f26522; border-color:#f26522 ">
                            <i class="fa fa-search"></i>
@@ -133,6 +133,7 @@
          <!-- banner section end -->
       </div>
       <!-- banner bg main end -->
+     
       <!-- fashion section start -->
       <div class="fashion_section">
          
@@ -145,38 +146,39 @@
                   <div class="container">
                      
                    
-
-                        
+                       
+                       
+                       
                         <div class="row">
                            <div class="col-lg-4 col-sm-4">
                               <div class="box_main">
                                  <h4 class="shirt_text">Men Shoe</h4>
-                                 <p class="price_text">Price  <span style="color: #262626;">$ </span></p>
-                                 <div class="tshirt_img"><img src=" {% static 'images/shoes.jpg' %} "></div>
+                                 <div class="tshirt_img"><img src=" {% static 'images/shoe.jpg' %} "></div>
                                  <div class="btn_main">
-                                    <div class="seemore_bt"><a href="{% url "show_all_shoe" %}">See More</a></div>
+                                    <div class=""><a href="{% url 'shoe' %}">See More</a></div>
                                  </div>
                               </div>
                            </div>
+
+                        
+
                            <div class="col-lg-4 col-sm-4">
                               <div class="box_main">
-                                 <h4 class="shirt_text">Man -shirt</h4>
-                                 <p class="price_text">Price  <span style="color: #262626;">$ 30</span></p>
-                                 <div class="tshirt_img"><img src=" {% static 'images/dress-shirt-img.png' %} "></div>
+                                 <h4 class="shirt_text">Men cloth</h4>
+                                 <div class="tshirt_img"><img src=" {% static 'images/men cloth.jpg' %} "></div>
                                  <div class="btn_main">
-                                    <div class="buy_bt"><a href="#">Buy Now</a></div>
-                                    <div class="seemore_bt"><a href="#">See More</a></div>
+                                    <div class="seemore_bt"><a href="{% url 'cloth' %}">See More</a></div>
                                  </div>
                               </div>
                            </div>
+
+
                            <div class="col-lg-4 col-sm-4">
                               <div class="box_main">
-                                 <h4 class="shirt_text">Man -shirt</h4>
-                                 <p class="price_text">Price  <span style="color: #262626;">$ 30</span></p>
-                                 <div class="tshirt_img"><img src=" {% static 'images/dress-shirt-img.png' %} "></div>
+                                 <h4 class="shirt_text">Men Accessories</h4>
+                                 <div class="tshirt_img"><img src=" {% static 'images/men accessories.jpg' %} "></div>
                                  <div class="btn_main">
-                                    <div class="buy_bt"><a href="#">Buy Now</a></div>
-                                    <div class="seemore_bt"><a href="#">See More</a></div>
+                                    <div class="seemore_bt"><a href="{% url 'accessories' %}">See More</a></div>
                                  </div>
                               </div>
                               
@@ -191,7 +193,11 @@
          </div>
       </div>
       <!-- fashion section end -->
+      
+      
       <!-- electronic section start -->
+
+
       <div class="fashion_section">
          <div id="electronic_main_slider">
             <div class="carousel-inner">
@@ -200,36 +206,36 @@
                      <h1 class="fashion_taital">women</h1>
                      <div class="fashion_section_2">
                         <div class="row">
+
+
                            <div class="col-lg-4 col-sm-4">
                               <div class="box_main">
-                                 <h4 class="shirt_text">Woman Scart</h4>
-                                 <p class="price_text">Price  <span style="color: #262626;">$ 30</span></p>
-                                 <div class="tshirt_img"><img src=" {% static 'images/women-clothes-img.png' %} "></div>
+                                 <h4 class="shirt_text">Woman shoe</h4>
+                                 <div class="tshirt_img"><img src=" {% static 'images/women shoe.jpg' %} "></div>
                                  <div class="btn_main">
-                                    <div class="buy_bt"><a href="#">Buy Now</a></div>
-                                    <div class="seemore_bt"><a href="#">See More</a></div>
+                                    <div class="seemore_bt"><a href="{% url "women_shoe" %}">See More</a></div>
                                  </div>
                               </div>
                            </div>
+
+
                            <div class="col-lg-4 col-sm-4">
                               <div class="box_main">
-                                 <h4 class="shirt_text">Woman Scart</h4>
-                                 <p class="price_text">Price  <span style="color: #262626;">$ 30</span></p>
-                                 <div class="tshirt_img"><img src=" {% static 'images/women-clothes-img.png' %} "></div>
+                                 <h4 class="shirt_text">Woman cloth</h4>
+                                 <div class="tshirt_img"><img src=" {% static 'images/women cloth.png' %} "></div>
                                  <div class="btn_main">
-                                    <div class="buy_bt"><a href="#">Buy Now</a></div>
-                                    <div class="seemore_bt"><a href="#">See More</a></div>
+                                    <div class="seemore_bt"><a href="{% url "women_cloth" %}">See More</a></div>
                                  </div>
                               </div>
                            </div>
+
+
                            <div class="col-lg-4 col-sm-4">
                               <div class="box_main">
                                  <h4 class="shirt_text">Woman Scart</h4>
-                                 <p class="price_text">Price  <span style="color: #262626;">$ 30</span></p>
-                                 <div class="tshirt_img"><img src=" {% static 'images/women-clothes-img.png' %} "></div>
+                                 <div class="tshirt_img"><img src=" {% static 'images/women accessories.jpg' %} "></div>
                                  <div class="btn_main">
-                                    <div class="buy_bt"><a href="#">Buy Now</a></div>
-                                    <div class="seemore_bt"><a href="#">See More</a></div>
+                                    <div class="seemore_bt"><a href="women_accessories">See More</a></div>
                                  </div>
                               </div>
                            </div>
@@ -240,6 +246,7 @@
             </div>
          </div>
       </div>
+
 
       <!-- electronic section end -->
       <!-- jewellery  section start -->

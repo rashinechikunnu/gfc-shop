@@ -56,7 +56,7 @@ class product(models.Model):
                       (2,"women"),
                       (3,"unisex"),
     )
-    sex =models.IntegerField(choices=sex_category,null=True,blank=True)
+    sex = models.IntegerField(choices=sex_category,null=True,blank=True)
     specification = models.TextField()
 
     price = models.CharField(max_length=6)

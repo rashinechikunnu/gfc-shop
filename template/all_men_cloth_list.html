@@ -3,7 +3,7 @@
 
 {% block header_and_footer %}
 
-{% for cloth_product in cloth_list %}
+{% for cloth_product in combined_cloth %}
     
            
     <div class="card mt-5 ms-5" style="width: 18rem;">
@@ -12,6 +12,8 @@
           <h3 class="card-title">{{cloth_product.brand}}</h3>
           <p class="card-text">{{cloth_product.name}}</p>
           <p class="card-text" style="color: red;">{{cloth_product.price}}</p>
+          <a href="{% url 'detail_product' cloth_product.pk %}" class="btn btn-primary">Full Details</a></p> 
+
           <td ><a href="" style="color: red;">add to cart</a> / <a href="" style="color: red;">buy now</a></td>
          
         </div>

@@ -1,0 +1,71 @@
+{% extends "header_and_footer.html" %}
+{% load static %}
+
+{% block header_and_footer %}
+<link rel="stylesheet" href="{% static 'css/product_details_style.css' %}">
+
+
+    
+
+  
+    <main class="container">
+
+      <!-- Left Column / Headphones Image -->
+      <div class="left-column">
+      <img style='width: 75%;' data-image="red" class="active" src="{{details_product.image.url}}" alt="">
+      </div>
+
+
+      <!-- Right Column -->
+      <div class="right-column">
+
+        <!-- Product Description -->
+        <div class="product-description">
+          <span><h3>{{details_product.brand}}</h3></span>
+          <h1>{{details_product.name}}</h1>
+        </div>
+
+        <!-- Product Configuration -->
+        <div class="product-configuration">
+
+          <!-- Product Color -->
+          <div class="product-color">
+            <p>{{details_product.specification}}
+            </span>
+
+            <div class="color-choose">
+              
+            </div>
+
+          </div>
+
+          <!-- Cable Configuration -->
+          <div class="cable-config">
+
+          
+
+            <h5 style="color: red;">{{details_product.price}}</h5>
+            </a>
+          </div>
+        </div>
+
+        <!-- Product Pricing -->
+        <div class="product-price">
+          <a href="#" class="cart-btn">Add to cart</a>
+        </div>
+      </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" charset="utf-8"></script>
+    <script src="script.js" charset="utf-8"></script>
+
+
+
+ 
+
+
+
+
+
+{% endblock header_and_footer %}

@@ -1,11 +1,11 @@
-{% extends "customer/header_and_footer.html" %}
-    
-    
-{% block customer %}
+{% extends "header_and_footer.html" %}
+{% load static %}
 
 
 
-    {% for s_product in c_shoe_list %}
+{% block header_and_footer %}
+         
+{% for s_product in combined_shoes %}
     
            
     <div class="card mt-5 ms-5" style="width: 18rem;">
@@ -14,16 +14,16 @@
           <h3 class="card-title">{{s_product.brand}}</h3>
           <p class="card-text">{{s_product.name}}</p>
           <p class="card-text" style="color: red;">{{s_product.price}}</p>
-          <td ><a href="{% url 'login' %}" style="color: red;">add to cart</a> / <a href="{% url 'login' %}" style="color: red;">buy now</a></td>
+          <a href="{% url 'detail_product' s_product.pk %}" class="btn btn-primary">Full Details</a></p> 
+
+          <td ><a href="" style="color: red;">add to cart</a> / <a href="" style="color: red;">buy now</a></td>
          
         </div>
     </div>
              
     {% endfor %}
+
+
+
+{% endblock header_and_footer %}
     
-    
-    {% endblock customer %}
-
-
-
-

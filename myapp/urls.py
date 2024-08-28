@@ -1,12 +1,25 @@
 from django.urls import path
 from . import views,views_customer,views_seller,views_admin
 urlpatterns = [
+
     # with out login
     path('',views.home,name='home'),
     path('login',views.log_in,name='login'),
-    path('shoe',views.shoe,name='shoe'),
-    path('cloth',views.cloth,name='cloth'),
-    path('accessories',views.accessories,name='accessories'),
+    
+    # main page men product area
+    # shoe
+    path('shoe',views.mens_shoe,name='shoe'),
+    # cloth
+    path('cloth',views.mens_cloth,name='cloth'),
+    # accessories
+    path('accessories',views.mens_accessories,name='accessories'),
+
+
+    # main page women product area
+    # shoe
+    path('women_shoe',views.women_shoe,name='women_shoe'),
+    path('women_cloth',views.women_cloth,name='women_cloth'),
+    path('women_accessories',views.women_accessories,name='women_accessories'),
 
 
 
@@ -29,36 +42,30 @@ urlpatterns = [
 
 
 
-
-
-
     # Customer area
-
-    # home
     path('customer_home',views_customer.home_page,name='customer_home'),
     # account creation
     path('customer_registration',views_customer.customer_account_creation,name='customer_registration'),
     # logout
     path('log_out',views.log_out,name='log_out'),
     # show shoe product
-    path('show_all_shoe',views_customer.c_shoe,name='show_all_shoe'),
-
-
 
 
 
     # Seller area
-
-    # home page
     path('seller_home',views_seller.seller_home_page,name='seller_home'),
     # create account
     path('seller_registration',views_seller.seller_account_creation,name='seller_registration'),
     # add product
     path('add_product',views_seller.add_product,name='add_product'),
     # view product
-    path('view_product',views_seller.product_view,name='view_product'),
-
-    
+    path('s_view_product',views_seller.product_view,name='s_view_product'),
+    # product full details
+    path("detail_product<pk>",views.product_details,name="detail_product"),
+    # edit product
+    path("edit_product/<pk>",views_seller.edit_product,name="edit_product"),
+    # delete product 
+    path("delete_product/<pk>",views_seller.delete_product,name="delete_product")
 
 
 ]

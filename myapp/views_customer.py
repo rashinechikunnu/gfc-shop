@@ -30,9 +30,3 @@ def customer_account_creation(request):
         
     return render(request,"customer/create_account.html",{'l_form':l_form,'c_form':c_form})
 
-
-# loging customer views product
-def c_shoe(request):
-    c_shoe_list = product.objects.filter(product_category=1)
-    print(c_shoe_list)
-    return render(request,"customer/all_shoe.html",{"c_shoe_list":c_shoe_list})

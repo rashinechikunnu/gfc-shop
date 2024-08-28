@@ -5,7 +5,7 @@
 
 
 
-{% for accessories_product in accessories_list %}
+{% for accessories_product in combined_accessories %}
     
            
     <div class="card mt-5 ms-5" style="width: 18rem;">
@@ -13,7 +13,9 @@
         <div  class="card-body">
           <h3 class="card-title">{{accessories_product.brand}}</h3>
           <p class="card-text">{{accessories_product.name}}</p>
-          <p class="card-text" style="color: red;">{{accessories_product.price}}</p>
+          <p class="card-text" style="color: red;">{{accessories_product.price}}
+          <a href="{% url 'detail_product' accessories_product.pk %}" class="btn btn-primary">Full Details</a></p> 
+
           <td ><a href="" style="color: red;">add to cart</a> / <a href="" style="color: red;">buy now</a></td>
          
         </div>

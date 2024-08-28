@@ -24,6 +24,9 @@
         <h5 class="card-title">{{product.name}}</h5>
         <h6 class="text-danger">{{product.price}}</h6>
         <a href="{{product.detail_url}}" class="btn btn-primary">Full Details</a>
+        <p >
+        <a href="{% url 'edit_product' product.id %}">edit product</a> / <a href="{% url 'delete_product' product.id %}">delete</a>
+        </p>
         </div>
     </div>
   

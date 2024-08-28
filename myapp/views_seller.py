@@ -64,3 +64,22 @@ def product_view(request):
 
     view_product = product.objects.filter(sellers=data)
     return render(request,'seller/views_product.html',{'view_product':view_product})
+
+
+def edit_product(request,pk):
+
+    edt = product.objects.get(pk=pk)
+    if request.method == "POST":
+        product_edt = prodctForms(request.POST,request.FILES, instance=edt)
+        if product_edt.is_valid():
+            edt.save()
+            return redirect('s_view_product')
+    else:
+        product_edt = prodctForms(instance=edt)
+        
+    return render(request,"seller/product_edit.html",{"product_edt":product_edt})
+
+def delete_product(request,pk):
+    detl = product.objects.get(pk=pk)
+    detl.delete()
+    return redirect("s_view_product")
