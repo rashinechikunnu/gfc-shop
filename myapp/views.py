@@ -149,9 +149,5 @@ def product_details(request,pk):
 
 
 
-# logout
 
-def log_out(request):
-    logout(request)
-    return redirect('home')
   

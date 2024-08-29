@@ -8,11 +8,11 @@ urlpatterns = [
     
     # main page men product area
     # shoe
-    path('shoe',views.mens_shoe,name='shoe'),
+    path('men_shoe',views.mens_shoe,name='shoe'),
     # cloth
-    path('cloth',views.mens_cloth,name='cloth'),
+    path('men_cloth',views.mens_cloth,name='cloth'),
     # accessories
-    path('accessories',views.mens_accessories,name='accessories'),
+    path('men_accessories',views.mens_accessories,name='accessories'),
 
 
     # main page women product area
@@ -47,8 +47,12 @@ urlpatterns = [
     # account creation
     path('customer_registration',views_customer.customer_account_creation,name='customer_registration'),
     # logout
-    path('log_out',views.log_out,name='log_out'),
-    # show shoe product
+    path('log_out',views_customer.log_out,name='log_out'),
+    # add to cart
+    path('add_to_cart/<pk>',views_customer.add_cart,name="add_to_cart"),
+    # cart view
+    path('views_cart',views_customer.view_cart,name="views_cart"),
+
 
 
 

@@ -65,3 +65,8 @@ class product(models.Model):
     def __str__(self):
         return self.name
     
+
+class add_to_cart(models.Model):
+    customers = models.ForeignKey(Customer,on_delete=models.CASCADE)
+    products= models.ForeignKey(product,on_delete=models.CASCADE)
+    
