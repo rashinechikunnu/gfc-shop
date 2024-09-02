@@ -6,19 +6,22 @@ urlpatterns = [
     path('',views.home,name='home'),
     path('login',views.log_in,name='login'),
     
+
     # main page men product area
-    # shoe
+    # men_shoe
     path('men_shoe',views.mens_shoe,name='shoe'),
-    # cloth
+    # men_cloth
     path('men_cloth',views.mens_cloth,name='cloth'),
-    # accessories
+    # men_accessories
     path('men_accessories',views.mens_accessories,name='accessories'),
 
 
     # main page women product area
-    # shoe
+    # women_shoe
     path('women_shoe',views.women_shoe,name='women_shoe'),
+    # women_cloth
     path('women_cloth',views.women_cloth,name='women_cloth'),
+    # women_accessories
     path('women_accessories',views.women_accessories,name='women_accessories'),
 
 
@@ -52,6 +55,10 @@ urlpatterns = [
     path('add_to_cart/<pk>',views_customer.add_cart,name="add_to_cart"),
     # cart view
     path('views_cart',views_customer.view_cart,name="views_cart"),
+    # remove cart
+    path('remove_carts/<pk>',views_customer.remove_cart,name='remove_carts'),
+    # payment area
+    path('product_payment/<pk>',views_customer.payment,name='product_payment'),
 
 
 

@@ -69,4 +69,11 @@ class product(models.Model):
 class add_to_cart(models.Model):
     customers = models.ForeignKey(Customer,on_delete=models.CASCADE)
     products= models.ForeignKey(product,on_delete=models.CASCADE)
-    
+    payment_status=models.IntegerField(default=0)
+
+class payment_product(models.Model):
+    add_to_cart_id = models.ForeignKey(add_to_cart,on_delete=models.CASCADE)
+    card_holder_name = models.CharField(max_length=50)
+    card_number = models.CharField(max_length=16)
+    card_expiration =models.CharField(max_length=7)
+    card_cvv = models.CharField(max_length=7)
