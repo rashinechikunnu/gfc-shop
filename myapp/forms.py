@@ -1,7 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm
 
 from django import forms
-from .models import Customer,Login,seller,product,payment_product
+from .models import Customer,Login,seller,product,payment_product,Feedback
 
 # create a customer_data modelForm
 
@@ -53,4 +53,11 @@ class paymentForm(forms.ModelForm):
         model = payment_product
         fields ="__all__"
         exclude = ("add_to_cart_id",)
-    
+
+
+
+# feedback forms
+class feedbackForms(forms.ModelForm):
+    class Meta:
+        model = Feedback
+        fields = ('text_me'),

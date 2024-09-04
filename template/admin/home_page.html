@@ -9,7 +9,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>GFC SHOP SELLER</title>
+      <title>GFC SHOP ADMIN</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -67,15 +67,18 @@
                         <i class="fa fa-paper-plane red_color"></i> <span>reject sellers list</span></a>
                      </li>
                      
-                     <li>
-                        <a href=" {% static 'contact.html' %} ">
-                        <i class="fa fa-paper-plane red_color"></i> <span>sellers product </span></a>
-                     </li>
-
+                    
                      <li>
                         <a href="{% url "customers_list" %}">
                         <i class="fa fa-paper-plane red_color"></i> <span>customers list </span></a>
                      </li>
+
+
+                     <li>
+                        <a href="{% url "view_customer_feedback" %}">
+                        <i class="fa fa-paper-plane red_color"></i> <span>replay feedback </span></a>
+                     </li>
+
 
 
                     

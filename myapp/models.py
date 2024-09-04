@@ -84,3 +84,15 @@ class payment_product(models.Model):
     order_address = models.CharField(max_length=200)
     phone_number=models.CharField(max_length=10)
     product_quantity=models.IntegerField()
+
+
+# customer feedback
+class Feedback(models.Model):
+    user = models.ForeignKey(Customer,on_delete=models.DO_NOTHING)
+    product_feedback = models.ForeignKey(product,on_delete=models.CASCADE)
+    text_me = models.TextField()
+    date = models.DateField(auto_now_add=True)
+    replay = models.TextField(null=True,blank=True)
+
+    def __str__(self):
+        return self.text_me

@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import seller,Customer,product
+from .models import seller,Customer,product,Feedback
 
 
 
@@ -51,4 +51,25 @@ def seller_product_list(request,pk):
     print(view_product)
     
     return render(request,"admin/seller_product_list.html",{"view_product":view_product})
+
+# feedback
+def feedback_customer(request):
+    
+    feedback_customer_list = Feedback.objects.all() 
+    
+    return render(request,'admin/feedback_customer.html',{'fdb_customer':feedback_customer_list})
+
+
+# replay feedback
+def replay_cunstomer(request,pk):
+    rply =Feedback.objects.get(pk=pk)
+    if request.method == 'POST':
+        rplyfrm = request.POST.get('replaaay')
+        rply.replay=rplyfrm
+        rply.save()
+        return redirect('view_customer_feedback')
+    
+    return render(request,'admin/customer_replay.html',{'rply':rply})
+
+
 

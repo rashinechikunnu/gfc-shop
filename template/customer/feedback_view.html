@@ -1,0 +1,23 @@
+{% extends "customer/header_and_footer.html" %}
+{% load static %}
+{% block customer %}
+<section class="container py-5">
+    <h2 class="mb-4">Customer Feedback</h2>
+    {% if view_feedback %}
+        <div class="list-group">
+            {% for feedback in view_feedback %}
+                <div class="list-group-item mb-3 border rounded">
+                    <h5 class="mb-1">Feedback:</h5>
+                    <p class="mb-2">{{ feedback.text_me }}</p>
+                    <h5 class="mb-1">Reply:</h5>
+                    <p class="mb-0">{{ feedback.replay }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert alert-info" role="alert">
+            No feedback available for this product.
+        </div>
+    {% endif %}
+</section>
+{% endblock customer %}

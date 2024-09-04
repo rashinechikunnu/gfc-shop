@@ -42,6 +42,12 @@ urlpatterns = [
     path('customers_list',views_admin.customer_list,name="customers_list"),
     # seller_product view
     path('product_view/<pk>',views_admin.seller_product_list,name="product_view"),
+    # customer feedback view
+    path("view_customer_feedback",views_admin.feedback_customer,name="view_customer_feedback"),
+    # replay feedback
+    path("replay_customer_feedback/<pk>",views_admin.replay_cunstomer,name="replay_customer_feedback"),
+
+
 
 
 
@@ -59,6 +65,12 @@ urlpatterns = [
     path('remove_carts/<pk>',views_customer.remove_cart,name='remove_carts'),
     # payment area
     path('product_payment/<pk>',views_customer.payment,name='product_payment'),
+    # feedback add
+    path('feedback/<pk>',views_customer.feedback_customer,name='feedback'),
+    # view feedback
+    path('feedback_view/<pk>',views_customer.feedback_view,name='feedback_view'),
+
+
 
 
 
@@ -76,7 +88,10 @@ urlpatterns = [
     # edit product
     path("edit_product/<pk>",views_seller.edit_product,name="edit_product"),
     # delete product 
-    path("delete_product/<pk>",views_seller.delete_product,name="delete_product")
+    path("delete_product/<pk>",views_seller.delete_product,name="delete_product"),
+    # order product
+    path("order_product",views_seller.product_order,name="order_product"),
+
 
 
 ]

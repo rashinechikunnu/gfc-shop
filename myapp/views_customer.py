@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
-from .forms import LoginForms,CustomerForms,paymentForm
-from .models import product,add_to_cart,Customer,payment_product
+from .forms import LoginForms,CustomerForms,feedbackForms
+from .models import product,add_to_cart,Customer,payment_product,Feedback
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 
@@ -62,8 +62,7 @@ def remove_cart(request,pk):
     product_remove=add_to_cart.objects.get(pk=pk)
     product_remove.delete()
     cart_views = add_to_cart.objects.all()
-    return render(request,"customer/view_cart.html",{"cart_views":cart_views})
-
+    return redirect('views_cart')
 
 # payment
 
@@ -128,6 +127,41 @@ def payment(request,pk):
             return redirect('customer_home')
     
     return render(request,"customer/payment.html")
+
+
+
+
+# feedback
+def feedback_customer(request,pk):
+    adduser = request.user
+    if not adduser.is_authenticated:
+        return redirect("login")
+    
+    else:
+        data1 = Customer.objects.get(user = adduser)
+        product_id = product.objects.get(pk=pk)
+        if request.method == 'POST':
+            feed_back= feedbackForms(request.POST)
+            if feed_back.is_valid():
+                obj = feed_back.save(commit = False)
+                obj.user = data1
+                obj.product_feedback=product_id
+                obj.save()
+        else:
+            feed_back=feedbackForms()
+
+
+    return render(request,"customer/feedback.html",{'feed_back':feed_back})
+
+
+
+# feedback view
+def feedback_view(request,pk):
+    productz = product.objects.get(pk=pk)
+    print(productz)
+    view_feedback = Feedback.objects.filter(product_feedback=productz)
+    print(view_feedback)
+    return render(request,"customer/feedback_view.html",{"view_feedback":view_feedback})
             
 
  

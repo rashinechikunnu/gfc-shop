@@ -70,14 +70,24 @@
       <!-- Product Pricing -->
       <div class="product-price text-center">
         <a href="{% url 'add_to_cart' details_product.id %}" class="btn btn-danger">Add to cart</a>
+        <a href="{% url 'feedback' details_product.id %}" class="btn btn-danger">add feedback</a>
+        <a href="{% url 'feedback_view' details_product.id %}" class="btn btn-danger">view feedback</a>
+
+
       </div>
     </div>
   </div>
 </main>
 
 
+<hr>
+<div>
+  <h1></h1>
+</div>
 
-<footer class="text-center  bg-warning text-white fixed-bottom">
+
+
+<footer class="text-center  bg-warning text-white  bottom" style="margin-top: 150px;">
         
   <!-- Copyright --> 
   <div class="text-center p-3">

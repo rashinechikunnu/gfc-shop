@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from .forms import LoginForms,SellerForms,prodctForms
-from .models import seller,product
+from .models import seller,product,add_to_cart,payment_product
 
 
 
@@ -51,6 +51,7 @@ def add_product(request):
             obj = add_product_form.save(commit = False)
             obj.sellers = data
             obj.save()
+            return redirect('s_view_product')
         
     else:
         add_product_form=prodctForms()
@@ -66,6 +67,7 @@ def product_view(request):
     return render(request,'seller/views_product.html',{'view_product':view_product})
 
 
+# edit product
 def edit_product(request,pk):
 
     edt = product.objects.get(pk=pk)
@@ -79,7 +81,18 @@ def edit_product(request,pk):
         
     return render(request,"seller/product_edit.html",{"product_edt":product_edt})
 
+# delete product
 def delete_product(request,pk):
     detl = product.objects.get(pk=pk)
     detl.delete()
     return redirect("s_view_product")
+
+
+# order product
+def product_order(request):
+    get_seller = request.user
+    seller_data = seller.objects.get(user=get_seller)
+    ordering_product= payment_product.objects.filter(add_to_cart_id__payment_status=1, add_to_cart_id__products__sellers = seller_data)
+    print(ordering_product)
+    return render(request,"seller/order_product.html",{"ordering_product":ordering_product})
+

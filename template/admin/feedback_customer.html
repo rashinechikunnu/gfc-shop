@@ -1,0 +1,53 @@
+{% extends "admin/home_page.html" %}
+{% load static %}
+
+{% block admin %}
+
+
+
+<style>
+    table, th, td {
+      border:1px solid black;
+    }
+    </style>
+    <body>
+    
+    
+    <table style="width:100%">
+      <tr>
+
+        <th>Name</th>
+        <th>Phone number</th>
+        <th>feedback</th>
+        <th>Brand</th>
+        <th>Model</th>
+        <th>image</th>
+        <th>date</th>
+        <th>replay</th>
+       
+      </tr>
+      {% for fdbk in fdb_customer %}
+      <tr>
+        <td>{{fdbk.user}}</td>
+        <td>{{fdbk.user.phone_number}}</td>
+        <td>{{fdbk.text_me}}</td>
+        <td>{{fdbk.product_feedback.brand}}</td>
+        <td>{{fdbk.product_feedback.name}}</td>
+        <td><img src="{{fdbk.product_feedback.image.url}}" alt="not" style="width: 50px; height:80px;"></td>
+        <td>{{fdbk.date}}</td>
+      
+          
+          <td>{% if fdbk.replay == None %}
+            <a href="{% url 'replay_customer_feedback' fdbk.id%}"> replay</a>
+            {% else %}
+            {{fdbk.replay}}
+            {% endif %}
+    
+        </td>
+    
+        
+      </tr>
+      {% endfor %}
+     
+    </table>
+{% endblock admin %}
