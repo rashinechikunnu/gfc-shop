@@ -43,6 +43,7 @@ class product(models.Model):
     brand = models.CharField(max_length=50)
     name = models.CharField(max_length=100)
     image = models.ImageField(upload_to="media/")
+    quantity = models.IntegerField(default=1)
     category =(
                     (1,"shoe"),
                     (2,"cloth"),
@@ -72,8 +73,14 @@ class add_to_cart(models.Model):
     payment_status=models.IntegerField(default=0)
 
 class payment_product(models.Model):
+    # payment session
     add_to_cart_id = models.ForeignKey(add_to_cart,on_delete=models.CASCADE)
     card_holder_name = models.CharField(max_length=50)
     card_number = models.CharField(max_length=16)
     card_expiration =models.CharField(max_length=7)
     card_cvv = models.CharField(max_length=7)
+    
+    # delivery address
+    order_address = models.CharField(max_length=200)
+    phone_number=models.CharField(max_length=10)
+    product_quantity=models.IntegerField()

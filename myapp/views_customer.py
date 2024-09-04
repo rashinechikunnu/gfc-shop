@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from .forms import LoginForms,CustomerForms,paymentForm
 from .models import product,add_to_cart,Customer,payment_product
 from django.contrib.auth import authenticate,login,logout
+from django.contrib import messages
 
 # customer account creation
 
@@ -67,34 +68,65 @@ def remove_cart(request,pk):
 # payment
 
 def payment(request,pk):
+    # payment session
     product_payment = add_to_cart.objects.get(pk=pk)
-    print(product_payment)
+    qty = product_payment.products.quantity
+    print(qty)
+
     card_name = request.POST.get("user_card_name")
     print(card_name)
+
     card_number = request.POST.get("user_card_number")
-    print(card_number)
+
     card_expiration = request.POST.get("user_card_expiration")  
-    print(card_expiration)
+
     card_cvv = request.POST.get("user_cvv" )
-    print(card_cvv)
+
+    # order place
+    order_address = request.POST.get("address")
+    purchaser_number = request.POST.get("number")
+    order_quantity = request.POST.get("quantity")
     
 
 
     if request.method == 'POST':
         
         pay=payment_product()
-        pay.add_to_cart_id = product_payment
-        print(pay.add_to_cart_id)
-        pay.card_holder_name = card_name
-        print(pay.card_holder_name)
-        pay.card_number = card_number
-        pay.card_expiration=card_expiration
-        pay.card_cvv= card_cvv
-        pay.save()
         
-        product_payment.payment_status = 1
-        product_payment.save()
-        return redirect('customer_home')
+        print("hello")
+        print(qty)
+
+        if int(order_quantity) > qty:
+            print("test")
+            messages.info(request,'out of stock')
+
+            
+        
+        # purchaser address
+        else:
+            pay.order_address=order_address
+            pay.phone_number=purchaser_number
+            pay.product_quantity=order_quantity
+
+        # payment
+            pay.add_to_cart_id = product_payment
+            pay.card_holder_name = card_name
+            pay.card_number = card_number
+            pay.card_expiration=card_expiration
+            pay.card_cvv= card_cvv
+            pay.save()
+
+            # Update product quantity
+            product_payment.products.quantity = qty - int(order_quantity)
+            product_payment.products.save()
+
+                
+        
+        
+            product_payment.payment_status = 1
+            product_payment.save()
+            return redirect('customer_home')
+    
     return render(request,"customer/payment.html")
             
 

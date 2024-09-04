@@ -57,7 +57,6 @@ def log_in(request):
 # all men shoe view  customer
 
 def mens_shoe(request):
-
     shoe_list = product.objects.filter(product_category=1,sex=3)
     list_shoe = product.objects.filter(product_category=1,sex=1)
     
