@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 from . models import product
+from myapp.filter import PlaceFilter
 
 from myapp.models import seller
 
@@ -51,6 +52,7 @@ def log_in(request):
 
 
 
+   
 
 # mens area
 
@@ -61,9 +63,13 @@ def mens_shoe(request):
     list_shoe = product.objects.filter(product_category=1,sex=1)
     
     combined_shoes = shoe_list | list_shoe
-    print(shoe_list)
+   
+    placeFilter = PlaceFilter(request.GET, queryset=combined_shoes)
+    data = placeFilter.qs
+
+   
     
-    return render(request,"all_men_shoe_list.html",{"combined_shoes":combined_shoes})
+    return render(request,"all_men_shoe_list.html",{"combined_shoes":data, 'placeFilter':placeFilter})
 
 
 # all men cloth view customer

@@ -5,6 +5,8 @@ urlpatterns = [
     # with out login
     path('',views.home,name='home'),
     path('login',views.log_in,name='login'),
+    # searh bar
+
     
 
     # main page men product area
@@ -14,7 +16,7 @@ urlpatterns = [
     path('men_cloth',views.mens_cloth,name='cloth'),
     # men_accessories
     path('men_accessories',views.mens_accessories,name='accessories'),
-
+    
 
     # main page women product area
     # women_shoe

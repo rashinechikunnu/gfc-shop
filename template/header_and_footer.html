@@ -18,10 +18,13 @@
                       
                   </div>
   
-                  <form class="d-flex align-items-center">
-                      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                      <button class="btn btn-outline-success bg-success text-light" type="submit">Search</button>
-                  </form>
+                  <form method="get" class="form-inline search-form">
+                    <div class="d-none d-md-flex ms-4">
+                         {{ placeFilter.form }}
+                        <br>
+                      <button class="btn btn-primary mr-2" type="submit">Search</button>
+                    </div>
+               </form>
               </div>
           </div>
 
