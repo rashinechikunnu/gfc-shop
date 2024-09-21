@@ -66,11 +66,16 @@
                         <a href="{% url "order_product" %}">
                         <i class="fa fa-paper-plane red_color"></i> <span>Product Ordering</span></a>
                      </li>
+
+                     <li><a href="{% url 'log_out' %}">
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                        <span class="padding_10">logout</span></a>
+                     </li>
                      
-                     <li>
+                     {% comment %} <li>
                         <a href=" {% static 'contact.html' %} ">
                         <i class="fa fa-paper-plane red_color"></i> <span>Selled Product </span></a>
-                     </li>
+                     </li> {% endcomment %}
 
                     
                   </ul>

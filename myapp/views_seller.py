@@ -1,18 +1,11 @@
 from django.shortcuts import render,redirect
 from .forms import LoginForms,SellerForms,prodctForms
-from .models import seller,product,add_to_cart,payment_product
-
-
-
-
-
-def seller_home_page(request):
-    return render(request,'seller/seller_home.html')
+from .models import seller,product,payment_product
+from django.contrib.auth.decorators import login_required
 
 
 
 # customer account creation
-
 def seller_account_creation(request):
     
     l_form = LoginForms()
@@ -37,7 +30,15 @@ def seller_account_creation(request):
     return render(request,"seller/create_account.html",{'l_form':l_form,'s_form':s_form})
 
 
+# seller Home
+@login_required(login_url='login')
+def seller_home_page(request):
+    return render(request,'seller/seller_home.html')
+
+
+
 # add products
+@login_required(login_url='login')
 def add_product(request):
  
     getseller = request.user
@@ -58,7 +59,10 @@ def add_product(request):
 
     return render(request,'seller/add_product.html',{'add_prodct_form':add_product_form})
 
+
+
 # view products
+@login_required(login_url='login')
 def product_view(request):
     get_uesr = request.user
     data = seller.objects.get(user=get_uesr)
@@ -67,7 +71,9 @@ def product_view(request):
     return render(request,'seller/views_product.html',{'view_product':view_product})
 
 
+
 # edit product
+@login_required(login_url='login')
 def edit_product(request,pk):
 
     edt = product.objects.get(pk=pk)
@@ -81,14 +87,19 @@ def edit_product(request,pk):
         
     return render(request,"seller/product_edit.html",{"product_edt":product_edt})
 
+
+
 # delete product
+@login_required(login_url='login')
 def delete_product(request,pk):
     detl = product.objects.get(pk=pk)
     detl.delete()
     return redirect("s_view_product")
 
 
+
 # order product
+@login_required(login_url='login')
 def product_order(request):
     get_seller = request.user
     seller_data = seller.objects.get(user=get_seller)

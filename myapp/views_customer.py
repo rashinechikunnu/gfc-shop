@@ -1,21 +1,24 @@
 from django.shortcuts import render,redirect
 from .forms import LoginForms,CustomerForms,feedbackForms
 from .models import product,add_to_cart,Customer,payment_product,Feedback
-from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth import logout
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
-# customer account creation
 
+# customer home page
+@login_required(login_url='login')
 def home_page(request):
     return render(request,"customer/customer_home.html")
 
+
+# customer account creation
 def customer_account_creation(request):
     
     l_form = LoginForms()
     c_form = CustomerForms()
-    
+
     if request.method == "POST":
-        
         l_form = LoginForms(request.POST)
         
         c_form = CustomerForms(request.POST)
@@ -34,6 +37,7 @@ def customer_account_creation(request):
 
 
 # customer add to cart
+@login_required(login_url='login')
 def add_cart(request,pk):
         get_user=request.user
         print(get_user)
@@ -46,7 +50,9 @@ def add_cart(request,pk):
             cart_item.save()
             return redirect('views_cart')
 
+
 # customer view CART
+@login_required(login_url='login')
 def view_cart(request):
     user_get= request.user
     user_customer =Customer.objects.get(user=user_get)
@@ -58,14 +64,16 @@ def view_cart(request):
 
 
 # remove product in cart
+@login_required(login_url='login')
 def remove_cart(request,pk):
     product_remove=add_to_cart.objects.get(pk=pk)
     product_remove.delete()
     cart_views = add_to_cart.objects.all()
     return redirect('views_cart')
 
-# payment
 
+# payment
+@login_required(login_url='login')
 def payment(request,pk):
     # payment session
     product_payment = add_to_cart.objects.get(pk=pk)
@@ -85,8 +93,6 @@ def payment(request,pk):
     order_address = request.POST.get("address")
     purchaser_number = request.POST.get("number")
     order_quantity = request.POST.get("quantity")
-    
-
 
     if request.method == 'POST':
         
@@ -98,8 +104,7 @@ def payment(request,pk):
         if int(order_quantity) > qty:
             print("test")
             messages.info(request,'out of stock')
-
-            
+  
         
         # purchaser address
         else:
@@ -119,8 +124,6 @@ def payment(request,pk):
             product_payment.products.quantity = qty - int(order_quantity)
             product_payment.products.save()
 
-                
-        
         
             product_payment.payment_status = 1
             product_payment.save()
@@ -131,7 +134,8 @@ def payment(request,pk):
 
 
 
-# feedback
+# add feedback
+@login_required(login_url='login')
 def feedback_customer(request,pk):
     adduser = request.user
     if not adduser.is_authenticated:
@@ -167,8 +171,4 @@ def feedback_view(request,pk):
  
 
 
-# logout
 
-def log_out(request):
-    logout(request)
-    return redirect('home')

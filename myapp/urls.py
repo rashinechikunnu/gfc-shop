@@ -7,7 +7,6 @@ urlpatterns = [
     path('login',views.log_in,name='login'),
     # searh bar
 
-    
 
     # main page men product area
     # men_shoe
@@ -25,7 +24,6 @@ urlpatterns = [
     path('women_cloth',views.women_cloth,name='women_cloth'),
     # women_accessories
     path('women_accessories',views.women_accessories,name='women_accessories'),
-
 
 
     # Admin Area
@@ -50,15 +48,12 @@ urlpatterns = [
     path("replay_customer_feedback/<pk>",views_admin.replay_cunstomer,name="replay_customer_feedback"),
 
 
-
-
-
     # Customer area
     path('customer_home',views_customer.home_page,name='customer_home'),
     # account creation
     path('customer_registration',views_customer.customer_account_creation,name='customer_registration'),
     # logout
-    path('log_out',views_customer.log_out,name='log_out'),
+    path('log_out',views.log_out,name='log_out'),
     # add to cart
     path('add_to_cart/<pk>',views_customer.add_cart,name="add_to_cart"),
     # cart view
@@ -71,10 +66,6 @@ urlpatterns = [
     path('feedback/<pk>',views_customer.feedback_customer,name='feedback'),
     # view feedback
     path('feedback_view/<pk>',views_customer.feedback_view,name='feedback_view'),
-
-
-
-
 
 
     # Seller area
@@ -93,7 +84,6 @@ urlpatterns = [
     path("delete_product/<pk>",views_seller.delete_product,name="delete_product"),
     # order product
     path("order_product",views_seller.product_order,name="order_product"),
-
 
 
 ]

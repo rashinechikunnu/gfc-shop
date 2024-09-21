@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from django.contrib.auth import authenticate,login
+from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 from . models import product
 from myapp.filter import PlaceFilter
@@ -8,7 +8,6 @@ from myapp.models import seller
 
 # Create your views here.
 def home(request):
-
     return render(request,"home.html")
 
 
@@ -151,6 +150,13 @@ def women_accessories(request):
 def product_details(request,pk):
     details_product = product.objects.get(pk=pk)   
     return render(request,"product_full_details.html",{'details_product':details_product})
+
+
+
+# logout
+def log_out(request):
+    logout(request)
+    return redirect('home')
 
 
 
