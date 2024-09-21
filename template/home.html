@@ -79,16 +79,24 @@
                  
                   <div class="main">
                      <!-- Another variation with a button -->
-                     <div class="input-group">
+
+                     {% comment %} <div class="input-group">
+                        
                         <input type="text" class="form-control" name="searched" placeholder="Search">
                         <div class="input-group-append">
-                           <button class="btn btn-secondary" type="button" style="background-color: #f26522; border-color:#f26522 ">
-                           <a href=""></a>
-                              <i class="fa fa-search"></i>
-                           </button>
+                           <form method="get" >
+                              <div class="d-none d-md-flex align-items-center ms-4">
+                                    {{ placeFilter.form.search }}
+                              <button class="btn btn-primary" type="submit">Search</button>
+                              </div>
+                              
+                          </form>
                         </div>
-                     </div>
+                     </div> {% endcomment %}
+                  
+
                   </div>
+
                   <div class="header_box">
                      <div class="lang_box ">
                         

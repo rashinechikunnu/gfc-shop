@@ -1,21 +1,30 @@
-import django_filters
+from django_filters import FilterSet, CharFilter
 from django import forms
-from django_filters import CharFilter
-from .models import product  # Adjust the import according to your project structure
+from django.db.models import Q
+from .models import product
 
-class PlaceFilter(django_filters.FilterSet):
-    brand = django_filters.CharFilter(
-        label="",
+class PlaceFilter(FilterSet):
+    search = CharFilter(
+        label="Search",
         lookup_expr='icontains',
         widget=forms.TextInput(attrs={
-            'placeholder': 'Search brand',
-            'class': 'form-control'
+            'placeholder': 'Search for brand, name, or specifications...',
+            'class': 'form-control',
+            'onfocus': "this.value=''"  # Optional: Clear on focus
         })
-    ),
+    )
 
-    
-
-   
     class Meta:
         model = product
-        fields = ['brand',]  # Include both 'brand' and 'produtz'
+        fields = []
+
+    def filter_queryset(self, queryset):
+        search = self.data.get('search')
+        if search:
+            queryset = queryset.filter(
+                Q(brand__icontains=search) |
+                Q(name__icontains=search) |
+                Q(specification__icontains=search) |
+                Q(price__icontains=search)
+            )
+        return queryset
