@@ -38,6 +38,47 @@
   </div>
 </div>
 
+
+
+<div class="container mt-4">
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            {% if combined_shoes.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page=1" aria-label="First">
+                        <span aria-hidden="true">« First</span>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ combined_shoes.previous_page_number }}" aria-label="Previous">
+                        <span aria-hidden="true">Previous</span>
+                    </a>
+                </li>
+            {% endif %}
+
+            <li class="page-item disabled">
+                <span class="page-link">
+                    Page {{ combined_shoes.number }} of {{ combined_shoes.paginator.num_pages }}.
+                </span>
+            </li>
+
+            {% if combined_shoes.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ combined_shoes.next_page_number }}" aria-label="Next">
+                        <span aria-hidden="true">Next</span>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ combined_shoes.paginator.num_pages }}" aria-label="Last">
+                        <span aria-hidden="true">Last »</span>
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>
+
+
    
 {% endblock header_and_footer %}
     

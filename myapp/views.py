@@ -4,6 +4,7 @@ from django.contrib import messages
 from . models import product
 from myapp.filter import PlaceFilter
 from myapp.models import seller
+from django.core.paginator import Paginator
 
 
 # Create your views here.
@@ -63,7 +64,11 @@ def mens_shoe(request):
     placeFilter = PlaceFilter(request.GET, queryset=combined_shoes)
     data = placeFilter.qs
 
-    return render(request,"all_men_shoe_list.html",{"combined_shoes":data, 'placeFilter':placeFilter})
+    paginator = Paginator(data,3)  
+    page_number = request.GET.get('page')  
+    page_obj = paginator.get_page(page_number)  
+
+    return render(request,"all_men_shoe_list.html",{"combined_shoes":page_obj, 'placeFilter':placeFilter})
 
 
 # all men cloth view customer
@@ -76,8 +81,12 @@ def mens_cloth(request):
 
     placeFilter = PlaceFilter(request.GET, queryset=combined_cloth)
     data = placeFilter.qs
+
+    paginator = Paginator(data,3)  
+    page_number = request.GET.get('page')  
+    page_obj = paginator.get_page(page_number)
     
-    return render(request,"all_men_cloth_list.html",{"combined_cloth":data, "placeFilter":placeFilter})
+    return render(request,"all_men_cloth_list.html",{"combined_cloth":page_obj, "placeFilter":placeFilter})
 
 
 
@@ -92,7 +101,11 @@ def mens_accessories(request):
     placeFilter = PlaceFilter(request.GET, queryset=combined_accessories)
     data = placeFilter.qs
 
-    return render(request,"all_men_accessories_list.html",{"combined_accessories":data, "placeFilter":placeFilter})
+    paginator = Paginator(data,3)  
+    page_number = request.GET.get('page')  
+    page_obj = paginator.get_page(page_number)
+
+    return render(request,"all_men_accessories_list.html",{"combined_accessories":page_obj, "placeFilter":placeFilter})
 
 
 
@@ -111,7 +124,11 @@ def women_shoe(request):
     placeFilter = PlaceFilter(request.GET, queryset=combined_shoes)
     data = placeFilter.qs
 
-    return render(request,"all_men_shoe_list.html",{"combined_shoes":data, "placeFilter":placeFilter})
+    paginator = Paginator(data,3)  
+    page_number = request.GET.get('page')  
+    page_obj = paginator.get_page(page_number)
+
+    return render(request,"all_men_shoe_list.html",{"combined_shoes":page_obj, "placeFilter":placeFilter})
 
 
 
@@ -126,7 +143,11 @@ def women_cloth(request):
     placeFilter = PlaceFilter(request.GET, queryset=combined_cloth)
     data = placeFilter.qs
 
-    return render(request,"all_men_cloth_list.html",{"combined_cloth":data, "placeFilter":placeFilter})
+    paginator = Paginator(data,3)  
+    page_number = request.GET.get('page')  
+    page_obj = paginator.get_page(page_number)
+
+    return render(request,"all_men_cloth_list.html",{"combined_cloth":page_obj, "placeFilter":placeFilter})
 
 
 
@@ -141,7 +162,11 @@ def women_accessories(request):
     placeFilter = PlaceFilter(request.GET, queryset=combined_accessories)
     data = placeFilter.qs
 
-    return render(request,"all_men_accessories_list.html",{"combined_accessories":data, "placeFilter":placeFilter})
+    paginator = Paginator(data,3)  
+    page_number = request.GET.get('page')  
+    page_obj = paginator.get_page(page_number)
+
+    return render(request,"all_men_accessories_list.html",{"combined_accessories":page_obj, "placeFilter":placeFilter})
 
 
 
